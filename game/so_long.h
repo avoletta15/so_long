@@ -6,7 +6,7 @@
 
 
 //MAC KEYS
-# define K_ESC					53
+/* # define K_ESC					53
 # define K_UP					13
 # define K_LEFT					0
 # define K_RIGHT				2
@@ -14,7 +14,18 @@
 # define A_UP					0x7E
 # define A_DOWN					0x7D
 # define A_LEFT					0x7B
-# define A_RIGHT				0x7C
+# define A_RIGHT				0x7C */
+
+//LINUX KEYS
+# define K_ESC				65307	
+# define K_UP				119	
+# define K_LEFT				97
+# define K_RIGHT			100		
+# define K_DOWN				115
+# define A_UP				65362	
+# define A_DOWN				65364	
+# define A_LEFT				65361	
+# define A_RIGHT			65363	
 
 
 typedef struct s_img

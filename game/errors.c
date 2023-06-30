@@ -123,8 +123,11 @@ int	check_errors(t_win *win)
 		if(!handle_flood_fill(win))
 			return(0);
 		else
+		{
 			ft_printf("\e[0;31mMISCONFIGURATED MAP\n");
 			return (1);
+		}
+			
 	}
 	else
 	{

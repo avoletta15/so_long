@@ -1,6 +1,6 @@
 # CC			= 	cc -fsanitize=leak -g
 CC			= 	cc -g
-CFLAGS		= 	 -Wall -Wextra -Werror -O3 -fsanitize=address
+CFLAGS		= 	 -Wall -Wextra -Werror -O3 #-fsanitize=address
 RM			= 	/bin/rm -f
 NAME		= 	so_long
 INCLUDES	= 	-I include/
@@ -13,12 +13,14 @@ COLOUR_GREEN=\033[7;1;32m
 COLOUR_END=\033[0m
 COLOUR_YELLOW=\033[7;1;33m
 
+LIBFT_DIR = ./libft
+
 ifeq ($(UNAME), Darwin)
 	MLX_LIB_DIR = minilbx_opengl/
 	MLX_INCLUDE = -Iminilbx_opengl
-	MLX_FLAGS = -L$(MLX_LIB_DIR) -Lmlx -lmlx -framework OpenGL -framework AppKit -O3
+	MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx -L$(LIBFT_DIR) -lft -framework OpenGL -framework AppKit -O3
 else
-	MLX_LIB_DIR = mlx_linux/
+	MLX_LIB_DIR = mlx/
 	MLX_INCLUDE = -Imlx_linux
 	MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -O3
 endif
