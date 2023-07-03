@@ -6,7 +6,7 @@
 /*   By: marioliv <marioliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 13:32:18 by marioliv          #+#    #+#             */
-/*   Updated: 2023/07/03 18:20:58 by marioliv         ###   ########.fr       */
+/*   Updated: 2023/07/03 18:24:28 by marioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	check_file_type(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return(0);
+		return (0);
 	i = 0;
 	while (file[i] != '\0')
 		i++;
@@ -35,7 +35,7 @@ int	check_file_type(char *file)
 	if (!ft_strnstr(file, "maps/", 5))
 		return (0);
 	if (file[i] == 'r' && file[i - 1] == 'e' && file[i - 2] == 'b' && file[i
-		- 3] == '.' && file[i - 4])
+			- 3] == '.' && file[i - 4])
 		return (1);
 	else
 		return (0);
