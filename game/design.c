@@ -1,34 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   design.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marioliv <marioliv@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/03 13:31:37 by marioliv          #+#    #+#             */
+/*   Updated: 2023/07/03 13:32:00 by marioliv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	put_player(t_win *win, int x, int y)
 {
 	win->player_x = x;
 	win->player_y = y;
-	if(!win->over)
+	if (!win->over)
 		put_img(win, win->img->player, x, y);
 	else
-		exit_game(win); //put_img(win, win->img->back, x, y);
+		exit_game(win);
 }
 
- void	create_exit(t_win *win, int x, int y)
+void	create_exit(t_win *win, int x, int y)
 {
-	if(win->mapstr->collect != 0)
+	if (win->mapstr->collect != 0)
 		put_img(win, win->img->exit_c, x, y);
 	else
 		put_img(win, win->img->exit_o, x, y);
-} 
+}
 
 void	draw_img(t_win *win)
 {
-	
 	int	x;
 	int	y;
 
 	y = -1;
-	while(win->map[++y])
+	while (win->map[++y])
 	{
 		x = -1;
-		while(win->map[y][++x])
+		while (win->map[y][++x])
 		{
 			if (win->map[y][x] == '1')
 				put_img(win, win->img->wall, x, y);
@@ -37,16 +48,9 @@ void	draw_img(t_win *win)
 			else if (win->map[y][x] == 'E')
 				create_exit(win, x, y);
 			else if (win->map[y][x] == 'P')
-			{
 				put_player(win, x, y);
-				ft_printf("\nCOORDENADA DRAW_IMG:\n");
-				ft_printf("PLAYER_X = %d\n", x);
-				ft_printf("PLAYER_Y = %d\n", y);
-			}
 			else if (win->map[y][x] == 'C')
-				put_img(win, win->img->collect, x, y); 
+				put_img(win, win->img->collect, x, y);
 		}
 	}
 }
-
-// 3 functions

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hooks.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marioliv <marioliv@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/03 13:33:28 by marioliv          #+#    #+#             */
+/*   Updated: 2023/07/03 13:33:29 by marioliv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	exit_game(t_win *win)
@@ -15,27 +27,27 @@ int	exit_game(t_win *win)
 
 int	read_esc(int keycode, t_win *win)
 {
-	if(keycode == K_ESC)
+	if (keycode == K_ESC)
 		exit_game(win);
-	return(0);
+	return (0);
 }
 
 int	key_hooks(int keycode, t_win *win)
 {
-	int counter;
+	int	counter;
 
 	counter = win->moves;
-	if(win->over)
+	if (win->over)
 		return (0);
-	if(keycode == K_UP || keycode == A_UP)
+	if (keycode == K_UP || keycode == A_UP)
 		move_up(win);
-	else if(keycode == K_LEFT || keycode == A_LEFT)
+	else if (keycode == K_LEFT || keycode == A_LEFT)
 		move_left(win);
-	else if(keycode == K_DOWN || keycode == A_DOWN)
+	else if (keycode == K_DOWN || keycode == A_DOWN)
 		move_down(win);
-	else if(keycode == K_RIGHT || keycode == A_RIGHT)
+	else if (keycode == K_RIGHT || keycode == A_RIGHT)
 		move_right(win);
-	if(counter != win->moves)
+	if (counter != win->moves)
 		ft_printf("Moves: %d\n", win->moves);
 	return (0);
 }
