@@ -21,7 +21,7 @@ ifeq ($(UNAME), Darwin)
 	MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx -L$(LIBFT_DIR) -lft -framework OpenGL -framework AppKit -O3
 else
 	MLX_LIB_DIR = mlx/
-	MLX_INCLUDE = -Imlx_linux
+	MLX_INCLUDE = -Imlx
 	MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -O3
 endif
 
@@ -29,6 +29,7 @@ all: $(NAME)
 
 $(NAME):  $(OBJS)
 	make -C ./libft/ --no-print
+	make -C $(MLX_LIB_DIR) --no-print
 	$(CC) $(CFLAGS) $(^) libft/libft.a $(MLX_FLAGS) -o $(@)
 	echo "$(COLOUR_GREEN)DONE --> $(COLOUR_YELLOW)$(NAME)$(DEFAULT)"
 %.o: %.c

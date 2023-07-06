@@ -6,7 +6,7 @@
 /*   By: marioliv <marioliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 13:32:18 by marioliv          #+#    #+#             */
-/*   Updated: 2023/07/03 18:24:28 by marioliv         ###   ########.fr       */
+/*   Updated: 2023/07/06 15:59:46 by marioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 void	map_error(t_win *win)
 {
 	if (win->map)
-		free(win->map);
+		free_map(win->map);
+	free(win->mapstr);
+	free(win->img);
 	ft_printf("\e[0;31mERROR\nMISCONFIGURATED MAP\n");
 	exit(1);
 }
@@ -55,7 +57,7 @@ int	check_walls(t_win win)
 	i = 0;
 	while (i < win.mapstr->h)
 	{
-		if (win.map[i][0] != '1' || win.map[1][win.mapstr->w - 1] != '1')
+		if (win.map[i][0] != '1' || win.map[i][win.mapstr->w - 1] != '1')
 			return (0);
 		i++;
 	}
@@ -93,6 +95,7 @@ int	check_errors(t_win *win)
 			return (0);
 		else
 		{
+			map_error(win);
 			ft_printf("\e[0;31mMISCONFIGURATED MAP\n");
 			return (1);
 		}

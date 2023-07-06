@@ -6,7 +6,7 @@
 /*   By: marioliv <marioliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 13:35:26 by marioliv          #+#    #+#             */
-/*   Updated: 2023/07/03 13:35:27 by marioliv         ###   ########.fr       */
+/*   Updated: 2023/07/06 15:44:04 by marioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	main(int ac, char **arg)
 	if (ac == 2 && check_file_type(arg[1]))
 	{
 		win.map = read_map(arg[1]);
+		if (!win.map)
+			return (ft_printf("\e[0;31mINVALID MAP FILE\n"), 1);
 		win.mapstr = malloc(sizeof(t_map));
 		win.img = malloc(sizeof(t_img));
 		if (!check_errors(&win))

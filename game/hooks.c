@@ -6,7 +6,7 @@
 /*   By: marioliv <marioliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 13:33:28 by marioliv          #+#    #+#             */
-/*   Updated: 2023/07/03 13:33:29 by marioliv         ###   ########.fr       */
+/*   Updated: 2023/07/06 16:07:08 by marioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ int	exit_game(t_win *win)
 	mlx_destroy_image(win->mlx_ptr, win->img->player);
 	mlx_destroy_image(win->mlx_ptr, win->img->collect);
 	mlx_destroy_image(win->mlx_ptr, win->img->back);
+	mlx_destroy_window(win->mlx_ptr, win->win_ptr);
+	mlx_destroy_display(win->mlx_ptr);
+	free(win->img);
 	free(win->mlx_ptr);
+	free(win->mapstr);
 	exit(0);
 }
 
